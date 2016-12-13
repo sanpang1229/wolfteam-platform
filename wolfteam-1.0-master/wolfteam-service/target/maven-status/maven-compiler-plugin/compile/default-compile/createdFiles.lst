@@ -1,0 +1,17 @@
+com\wolfteam\service\process\impl\VoiceProcessor.class
+com\wolfteam\service\wx\IWxSubscribeUserService.class
+com\wolfteam\service\process\impl\EventProcessor.class
+com\wolfteam\service\wx\impl\WxSubscribeUserService.class
+com\wolfteam\service\process\impl\TextProcessor.class
+com\wolfteam\utils\wx\ResponseUtil.class
+com\wolfteam\utils\wx\AccessTokenMap$Entity.class
+com\wolfteam\utils\wx\AccessTokenMap.class
+com\wolfteam\service\process\AbstractCompositeProcess.class
+com\wolfteam\service\process\Processor.class
+com\wolfteam\service\process\impl\PictureProcessor.class
+com\box\tei\thread\AutoExpandExcutor.class
+com\box\tei\thread\ResponseCallable.class
+com\wolfteam\service\process\AbstractProcessor.class
+com\wolfteam\service\process\impl\LocationProcessor.class
+com\wolfteam\service\process\impl\EventProcessor$1.class
+com\wolfteam\service\process\impl\UnknowRequestTypeProcessor.class

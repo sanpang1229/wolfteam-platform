@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	<!-- 跟spring 整合以后就不需要了 都放在spring-application 里面配置了；额这里单独配置多数据源 放在mybatis-config 
+		中就不会那么乱 -->
+	<bean id='propertiesTools' class="com.sanpang.wolfteam.properties.PropertiesTools" 		init-method="init">
+		<property name="readKey" value="${datasource.readdatakey}" />
+		<property name="writeKey" value="${datasource.writedatakey}" />
+	</bean>
+	<!-- 数据库连接池 -->
+	<!--数据源 读写 -->
+	<bean id="dataSourceRW" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${database.driverClassName}" />
+		<property name="url" value="${database.url}" />
+		<property name="username" value="${database.username}" />
+		<property name="password" value="${database.password}" />
+		<property name="initialSize" value="${database.initialSize}" />
+		<property name="maxActive" value="${database.maxActive}" />
+		<property name="minIdle" value="${database.minIdle}" />
+		<property name="maxWait" value="${database.maxWait}" />
+		<property name="validationQuery" value="${database.validationQuery}" />
+		<property name="testOnBorrow" value="${database.testOnBorrow}" />
+		<property name="testOnReturn" value="${database.testOnReturn}" />
+		<property name="testWhileIdle" value="${database.testWhileIdle}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${database.timeBetweenEvictionRunsMillis}" />
+		<property name="filters" value="${database.filters}" />
+		<!-- 配置监控统计拦截的filters -->
+		<property name="proxyFilters">
+			<list>
+				<ref bean="stat-filter" />
+			</list>
+		</property>
+	</bean>
+	<!-- 数据库连接池 -->
+	<!--数据源 读 -->
+	<bean id="dataSourceR" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${database.driverClassName2}" />
+		<property name="url" value="${database.url2}" />
+		<property name="username" value="${database.username2}" />
+		<property name="password" value="${database.password2}" />
+		<property name="initialSize" value="${database.initialSize}" />
+		<property name="maxActive" value="${database.maxActive}" />
+		<property name="minIdle" value="${database.minIdle}" />
+		<property name="maxWait" value="${database.maxWait}" />
+		<property name="validationQuery" value="${database.validationQuery}" />
+		<property name="testOnBorrow" value="${database.testOnBorrow}" />
+		<property name="testOnReturn" value="${database.testOnReturn}" />
+		<property name="testWhileIdle" value="${database.testWhileIdle}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${database.timeBetweenEvictionRunsMillis}" />
+		<property name="filters" value="${database.filters}" />
+		<!-- 配置监控统计拦截的filters -->
+		<property name="proxyFilters">
+			<list>
+				<ref bean="stat-filter" />
+			</list>
+		</property>
+	</bean>
+	
+	<!--数据源 读 -->
+	<bean id="salve_two" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<property name="driverClassName" value="${database.driverClassName3}" />
+		<property name="url" value="${database.url3}" />
+		<property name="username" value="${database.username3}" />
+		<property name="password" value="${database.password3}" />
+		<property name="initialSize" value="${database.initialSize}" />
+		<property name="maxActive" value="${database.maxActive}" />
+		<property name="minIdle" value="${database.minIdle}" />
+		<property name="maxWait" value="${database.maxWait}" />
+		<property name="validationQuery" value="${database.validationQuery}" />
+		<property name="testOnBorrow" value="${database.testOnBorrow}" />
+		<property name="testOnReturn" value="${database.testOnReturn}" />
+		<property name="testWhileIdle" value="${database.testWhileIdle}" />
+		<property name="timeBetweenEvictionRunsMillis" value="${database.timeBetweenEvictionRunsMillis}" />
+		<property name="filters" value="${database.filters}" />
+		<!-- 配置监控统计拦截的filters -->
+		<property name="proxyFilters">
+			<list>
+				<ref bean="stat-filter" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- 动态数据源 -->
+	<bean id="dynamicDataSource" class="com.sanpang.wolfteam.holder.DynamicDataSource">
+		<!-- 通过key-value关联数据源 -->
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<!-- write -->
+				<entry key="dataSourceKeyRW" value-ref="dataSourceRW"></entry>
+				<!-- read -->
+				<entry key="dataSourceKeyR" value-ref="dataSourceR"></entry>
+				<!-- read-2 -->
+				<entry key="dataSourceKeyR2" value-ref="salve_two"></entry>
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSourceRW" />
+	</bean>
+
+	<!--mybatis与Spring整合 开始 -->
+	<!-- 配置sqlsessionFactory -->
+	<bean id="sqlSessionFactory" name="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
+		<property name="mapperLocations" value="classpath:mybatis/mapper/*.xml" />
+		<!-- 动态数据源 -->
+		<property name="dataSource" ref="dynamicDataSource" />
+	</bean>
+	
+	<!-- 配置数据库注解aop -->
+	<!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+	<bean id="multyDataSourceAspect" class="com.sanpang.wolfteam.aspect.DataSourceAspect"/>
+	<aop:config>
+		<aop:aspect id="c" ref="multyDataSourceAspect">
+			<aop:pointcut id="tx" 	expression="execution(* com.sanpang.wolfteam.mapper.*.*(..))" />
+			<aop:before pointcut-ref="tx" method="before" />
+		</aop:aspect>
+	</aop:config>
+	<!-- 配置扫描包，加载mapper代理对象 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.sanpang.wolfteam.mapper"></property>
+	</bean>
+
+	<bean name="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dynamicDataSource"></property>
+	</bean>
+	<!-- 标注类型 的事务配置 如果使用注解事务。就放开 默认动态代理为JDK 不要随便写true -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+</beans>

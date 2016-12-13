@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wolfteam.dao.wx.SubscribeUserMapper">
+
+	<!--实体映射-->
+	<resultMap id="BaseresultMap" type="com.wolfteam.pojo.wx.SubscribeUser">
+		<!--主键-->
+		<id property="id" column="id" />
+		<!--微信加密后-->
+		<result property="openid" column="openid" />
+		<!--是否关注-->
+		<result property="subscribe" column="subscribe" />
+		<!--昵称-->
+		<result property="nickname" column="nickname" />
+		<!--性别-->
+		<result property="sex" column="sex" />
+		<!--用户所在城市-->
+		<result property="city" column="city" />
+		<!--用户所在国家-->
+		<result property="country" column="country" />
+		<!--用户所在省份-->
+		<result property="province" column="province" />
+		<!--用户的语言，简体中文为zh_CN-->
+		<result property="language" column="language" />
+		<!--用户头像-->
+		<result property="headimgurl" column="headimgurl" />
+		<!--用户关注时间-->
+		<result property="subscribeTime" column="subscribe_time" />
+		<!--只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段-->
+		<result property="unionid" column="unionid" />
+		<!--公众号运营者对粉丝的备注-->
+		<result property="remark" column="remark" />
+		<!--用户所在的分组ID（兼容旧的用户分组接口）-->
+		<result property="groupid" column="groupid" />
+		<!--用户被打上的标签ID列表-->
+		<result property="tagidList" column="tagid_list" />
+		<!--公众号平台-->
+		<result property="platformname" column="platformname" />
+		<!--系统创建时间-->
+		<result property="createTime" column="create_time" />
+		<!--系统修改时间-->
+		<result property="updateTime" column="update_time" />
+		<!--删除标志-->
+		<result property="deleteFlag" column="delete_flag" />
+	</resultMap>
+
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		 id,	openid,	subscribe,	nickname,	sex,	city,	country,	province,	language,	headimgurl,	subscribe_time,	unionid,	remark,	groupid,	tagid_list,	platformname,	create_time,	update_time,	delete_flag
+	</sql>
+
+	<!-- 通用查询条件sql-->
+	<sql id="WHERE_VAR">
+
+
+		<where>
+			<if test="id !=null and id!=''">
+				 and 	id=#{id}
+			</if>
+
+			<if test="openid !=null and openid!=''">
+				 and 	openid=#{openid}
+			</if>
+
+			<if test="subscribe !=null and subscribe!=''">
+				 and 	subscribe=#{subscribe}
+			</if>
+
+			<if test="nickname !=null and nickname!=''">
+				 and 	nickname=#{nickname}
+			</if>
+
+			<if test="sex !=null and sex!=''">
+				 and 	sex=#{sex}
+			</if>
+
+			<if test="city !=null and city!=''">
+				 and 	city=#{city}
+			</if>
+
+			<if test="country !=null and country!=''">
+				 and 	country=#{country}
+			</if>
+
+			<if test="province !=null and province!=''">
+				 and 	province=#{province}
+			</if>
+
+			<if test="language !=null and language!=''">
+				 and 	language=#{language}
+			</if>
+
+			<if test="headimgurl !=null and headimgurl!=''">
+				 and 	headimgurl=#{headimgurl}
+			</if>
+
+			<if test="subscribeTime !=null and subscribeTime!=''">
+				 and 	subscribeTime=#{subscribeTime}
+			</if>
+
+			<if test="unionid !=null and unionid!=''">
+				 and 	unionid=#{unionid}
+			</if>
+
+			<if test="remark !=null and remark!=''">
+				 and 	remark=#{remark}
+			</if>
+
+			<if test="groupid !=null and groupid!=''">
+				 and 	groupid=#{groupid}
+			</if>
+
+			<if test="tagidList !=null and tagidList!=''">
+				 and 	tagidList=#{tagidList}
+			</if>
+
+			<if test="platformname !=null and platformname!=''">
+				 and 	platformname=#{platformname}
+			</if>
+
+			<if test="createTime !=null and createTime!=''">
+				 and 	createTime=#{createTime}
+			</if>
+
+			<if test="updateTime !=null and updateTime!=''">
+				 and 	updateTime=#{updateTime}
+			</if>
+
+			<if test="deleteFlag !=null and deleteFlag!=''">
+				 and 	deleteFlag=#{deleteFlag}
+			</if>
+
+		</where>
+
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultType="com.wolfteam.pojo.wx.SubscribeUser" parameterType="java.lang.Integer">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM wt_subscribe_user
+		 WHERE id = #{id}
+	</select>
+
+	<!-- 查询（根据匹配字段,按条件查询） -->
+	<select id="selectByWhere" resultType="com.wolfteam.pojo.wx.SubscribeUser" parameterType="com.wolfteam.pojo.wx.SubscribeUser">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM wt_subscribe_user
+
+		<where>
+			<if test="id !=null and id!=''">
+				 and 	id=#{id}
+			</if>
+
+			<if test="openid !=null and openid!=''">
+				 and 	openid=#{openid}
+			</if>
+
+			<if test="subscribe !=null and subscribe!=''">
+				 and 	subscribe=#{subscribe}
+			</if>
+
+			<if test="nickname !=null and nickname!=''">
+				 and 	nickname=#{nickname}
+			</if>
+
+			<if test="sex !=null and sex!=''">
+				 and 	sex=#{sex}
+			</if>
+
+			<if test="city !=null and city!=''">
+				 and 	city=#{city}
+			</if>
+
+			<if test="country !=null and country!=''">
+				 and 	country=#{country}
+			</if>
+
+			<if test="province !=null and province!=''">
+				 and 	province=#{province}
+			</if>
+
+			<if test="language !=null and language!=''">
+				 and 	language=#{language}
+			</if>
+
+			<if test="headimgurl !=null and headimgurl!=''">
+				 and 	headimgurl=#{headimgurl}
+			</if>
+
+			<if test="subscribeTime !=null and subscribeTime!=''">
+				 and 	subscribeTime=#{subscribeTime}
+			</if>
+
+			<if test="unionid !=null and unionid!=''">
+				 and 	unionid=#{unionid}
+			</if>
+
+			<if test="remark !=null and remark!=''">
+				 and 	remark=#{remark}
+			</if>
+
+			<if test="groupid !=null and groupid!=''">
+				 and 	groupid=#{groupid}
+			</if>
+
+			<if test="tagidList !=null and tagidList!=''">
+				 and 	tagidList=#{tagidList}
+			</if>
+
+			<if test="platformname !=null and platformname!=''">
+				 and 	platformname=#{platformname}
+			</if>
+
+			<if test="createTime !=null and createTime!=''">
+				 and 	createTime=#{createTime}
+			</if>
+
+			<if test="updateTime !=null and updateTime!=''">
+				 and 	updateTime=#{updateTime}
+			</if>
+
+			<if test="deleteFlag !=null and deleteFlag!=''">
+				 and 	deleteFlag=#{deleteFlag}
+			</if>
+
+		</where>
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		 DELETE FROM wt_subscribe_user
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.wolfteam.pojo.wx.SubscribeUser" useGeneratedKeys="true" keyProperty="id">
+		 INSERT INTO wt_subscribe_user
+ 		(id,openid,subscribe,nickname,sex,city,country,province,language,headimgurl,subscribe_time,unionid,remark,groupid,tagid_list,platformname,create_time,update_time,delete_flag) 
+		 VALUES 
+ 		(#{id},#{openid},#{subscribe},#{nickname},#{sex},#{city},#{country},#{province},#{language},#{headimgurl},#{subscribeTime},#{unionid},#{remark},#{groupid},#{tagidList},#{platformname},#{createTime},#{updateTime},#{deleteFlag}) 
+	</insert>
+
+	<!-- 添加 （匹配有值的字段）-->
+	<insert id="insertSelective" parameterType="com.wolfteam.pojo.wx.SubscribeUser" useGeneratedKeys="true" keyProperty="id">
+		 INSERT INTO wt_subscribe_user
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="openid != null">
+				 openid,
+			</if>
+			<if test="subscribe != null">
+				 subscribe,
+			</if>
+			<if test="nickname != null">
+				 nickname,
+			</if>
+			<if test="sex != null">
+				 sex,
+			</if>
+			<if test="city != null">
+				 city,
+			</if>
+			<if test="country != null">
+				 country,
+			</if>
+			<if test="province != null">
+				 province,
+			</if>
+			<if test="language != null">
+				 language,
+			</if>
+			<if test="headimgurl != null">
+				 headimgurl,
+			</if>
+			<if test="subscribeTime != null">
+				 subscribe_time,
+			</if>
+			<if test="unionid != null">
+				 unionid,
+			</if>
+			<if test="remark != null">
+				 remark,
+			</if>
+			<if test="groupid != null">
+				 groupid,
+			</if>
+			<if test="tagidList != null">
+				 tagid_list,
+			</if>
+			<if test="platformname != null">
+				 platformname,
+			</if>
+			<if test="createTime != null">
+				 create_time,
+			</if>
+			<if test="updateTime != null">
+				 update_time,
+			</if>
+			<if test="deleteFlag != null">
+				 delete_flag,
+			</if>
+
+		 </trim>
+		 <trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id},
+			</if>
+			<if test="openid!=null">
+				 #{openid},
+			</if>
+			<if test="subscribe!=null">
+				 #{subscribe},
+			</if>
+			<if test="nickname!=null">
+				 #{nickname},
+			</if>
+			<if test="sex!=null">
+				 #{sex},
+			</if>
+			<if test="city!=null">
+				 #{city},
+			</if>
+			<if test="country!=null">
+				 #{country},
+			</if>
+			<if test="province!=null">
+				 #{province},
+			</if>
+			<if test="language!=null">
+				 #{language},
+			</if>
+			<if test="headimgurl!=null">
+				 #{headimgurl},
+			</if>
+			<if test="subscribeTime!=null">
+				 #{subscribeTime},
+			</if>
+			<if test="unionid!=null">
+				 #{unionid},
+			</if>
+			<if test="remark!=null">
+				 #{remark},
+			</if>
+			<if test="groupid!=null">
+				 #{groupid},
+			</if>
+			<if test="tagidList!=null">
+				 #{tagidList},
+			</if>
+			<if test="platformname!=null">
+				 #{platformname},
+			</if>
+			<if test="createTime!=null">
+				 #{createTime},
+			</if>
+			<if test="updateTime!=null">
+				 #{updateTime},
+			</if>
+			<if test="deleteFlag!=null">
+				 #{deleteFlag},
+			</if>
+		 </trim>
+	</insert>
+	<!-- 添加 （匹配有值的字段）不插入重复的 openid 不能为Null-->
+	<insert id="insertSelectiveUnique" parameterType="com.wolfteam.pojo.wx.SubscribeUser" useGeneratedKeys="true" keyProperty="id">
+		 INSERT INTO wt_subscribe_user
+		 <trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id != null">
+				 id,
+			</if>
+			<if test="openid != null">
+				 openid,
+			</if>
+			<if test="subscribe != null">
+				 subscribe,
+			</if>
+			<if test="nickname != null">
+				 nickname,
+			</if>
+			<if test="sex != null">
+				 sex,
+			</if>
+			<if test="city != null">
+				 city,
+			</if>
+			<if test="country != null">
+				 country,
+			</if>
+			<if test="province != null">
+				 province,
+			</if>
+			<if test="language != null">
+				 language,
+			</if>
+			<if test="headimgurl != null">
+				 headimgurl,
+			</if>
+			<if test="subscribeTime != null">
+				 subscribe_time,
+			</if>
+			<if test="unionid != null">
+				 unionid,
+			</if>
+			<if test="remark != null">
+				 remark,
+			</if>
+			<if test="groupid != null">
+				 groupid,
+			</if>
+			<if test="tagidList != null">
+				 tagid_list,
+			</if>
+			<if test="platformname != null">
+				 platformname,
+			</if>
+			<if test="createTime != null">
+				 create_time,
+			</if>
+			<if test="updateTime != null">
+				 update_time,
+			</if>
+			<if test="deleteFlag != null">
+				 delete_flag,
+			</if>
+
+		 </trim>
+		 
+		 select 
+		 <trim prefix="" suffix="" suffixOverrides="," >
+			<if test="id!=null">
+				 #{id},
+			</if>
+			<if test="openid!=null">
+				 #{openid},
+			</if>
+			<if test="subscribe!=null">
+				 #{subscribe},
+			</if>
+			<if test="nickname!=null">
+				 #{nickname},
+			</if>
+			<if test="sex!=null">
+				 #{sex},
+			</if>
+			<if test="city!=null">
+				 #{city},
+			</if>
+			<if test="country!=null">
+				 #{country},
+			</if>
+			<if test="province!=null">
+				 #{province},
+			</if>
+			<if test="language!=null">
+				 #{language},
+			</if>
+			<if test="headimgurl!=null">
+				 #{headimgurl},
+			</if>
+			<if test="subscribeTime!=null">
+				 #{subscribeTime},
+			</if>
+			<if test="unionid!=null">
+				 #{unionid},
+			</if>
+			<if test="remark!=null">
+				 #{remark},
+			</if>
+			<if test="groupid!=null">
+				 #{groupid},
+			</if>
+			<if test="tagidList!=null">
+				 #{tagidList},
+			</if>
+			<if test="platformname!=null">
+				 #{platformname},
+			</if>
+			<if test="createTime!=null">
+				 #{createTime},
+			</if>
+			<if test="updateTime!=null">
+				 #{updateTime},
+			</if>
+			<if test="deleteFlag!=null">
+				 #{deleteFlag},
+			</if>
+		 </trim>
+		 from dual where not   exists (
+		 	select 1 from  wt_subscribe_user where  openid = #{openid}
+		 )
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.wolfteam.pojo.wx.SubscribeUser">
+		 UPDATE wt_subscribe_user
+ 		 <set> 
+			<if test="openid != null">
+				 openid = #{openid},
+			</if>
+			<if test="subscribe != null">
+				 subscribe = #{subscribe},
+			</if>
+			<if test="nickname != null">
+				 nickname = #{nickname},
+			</if>
+			<if test="sex != null">
+				 sex = #{sex},
+			</if>
+			<if test="city != null">
+				 city = #{city},
+			</if>
+			<if test="country != null">
+				 country = #{country},
+			</if>
+			<if test="province != null">
+				 province = #{province},
+			</if>
+			<if test="language != null">
+				 language = #{language},
+			</if>
+			<if test="headimgurl != null">
+				 headimgurl = #{headimgurl},
+			</if>
+			<if test="subscribeTime != null">
+				 subscribe_time = #{subscribeTime},
+			</if>
+			<if test="unionid != null">
+				 unionid = #{unionid},
+			</if>
+			<if test="remark != null">
+				 remark = #{remark},
+			</if>
+			<if test="groupid != null">
+				 groupid = #{groupid},
+			</if>
+			<if test="tagidList != null">
+				 tagid_list = #{tagidList},
+			</if>
+			<if test="platformname != null">
+				 platformname = #{platformname},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime},
+			</if>
+			<if test="updateTime != null">
+				 update_time = #{updateTime},
+			</if>
+			<if test="deleteFlag != null">
+				 delete_flag = #{deleteFlag},
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id}
+	</update>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKey" parameterType="com.wolfteam.pojo.wx.SubscribeUser">
+		 UPDATE wt_subscribe_user
+		 SET 
+			 openid = #{openid},
+			 subscribe = #{subscribe},
+			 nickname = #{nickname},
+			 sex = #{sex},
+			 city = #{city},
+			 country = #{country},
+			 province = #{province},
+			 language = #{language},
+			 headimgurl = #{headimgurl},
+			 subscribe_time = #{subscribeTime},
+			 unionid = #{unionid},
+			 remark = #{remark},
+			 groupid = #{groupid},
+			 tagid_list = #{tagidList},
+			 platformname = #{platformname},
+			 create_time = #{createTime},
+			 update_time = #{updateTime},
+			 delete_flag = #{deleteFlag}
+		 WHERE id = #{id}
+	</update>
+	
+	<!-- 查询（根据主键openid查询） -->
+	<select id="queryIsSubscribed" resultType="com.wolfteam.pojo.wx.SubscribeUser" parameterType="java.lang.String">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM wt_subscribe_user
+		 WHERE openid = #{openid}
+	</select>
+	<update id="cancelSubscribEvent" parameterType="java.lang.String">
+		UPDATE wt_subscribe_user
+		 SET 
+			 subscribe = 0,
+			 delete_flag = 1
+		 WHERE openid = #{openid}
+	
+	</update>
+
+</mapper>

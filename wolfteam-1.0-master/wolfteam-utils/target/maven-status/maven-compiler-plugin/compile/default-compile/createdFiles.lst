@@ -1,0 +1,11 @@
+com\wolfteam\util\Reflections.class
+com\wolfteam\util\http\HttpUtil.class
+com\wolfteam\conmon\wx\WxSignUtil.class
+com\wolfteam\util\Exceptions.class
+com\wolfteam\conmon\JaxbMapper$CollectionWrapper.class
+com\wolfteam\util\MyX509TrustManager.class
+com\wolfteam\conmon\JaxbMapper.class
+com\wolfteam\conmon\wx\WXPlatAPIUtil.class
+com\wolfteam\conmon\WxRequestMessagesPareUtils.class
+com\wolfteam\util\StringUtil.class
+com\wolfteam\conmon\constant\WxBasicConfig.class

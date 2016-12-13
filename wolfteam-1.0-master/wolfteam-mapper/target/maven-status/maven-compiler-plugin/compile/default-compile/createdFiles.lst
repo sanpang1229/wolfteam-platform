@@ -1,0 +1,3 @@
+com\wolfteam\util\SpringContextHolder.class
+com\wolfteam\dao\wx\SubscribeUserMapper.class
+com\wolfteam\dao\wx\IAutoReplyConfigDao.class

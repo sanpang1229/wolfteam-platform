@@ -1,0 +1,15 @@
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\process\Processor.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\box\tei\thread\AutoExpandExcutor.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\process\AbstractCompositeProcess.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\utils\wx\ResponseUtil.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\process\impl\PictureProcessor.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\wx\IWxSubscribeUserService.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\process\impl\EventProcessor.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\process\impl\LocationProcessor.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\process\impl\VoiceProcessor.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\wx\impl\WxSubscribeUserService.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\process\AbstractProcessor.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\process\impl\TextProcessor.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\service\process\impl\UnknowRequestTypeProcessor.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\wolfteam\utils\wx\AccessTokenMap.java
+D:\wolfteam-platform\workspace\wolfteam-1.0-master\wolfteam-service\src\main\java\com\box\tei\thread\ResponseCallable.java

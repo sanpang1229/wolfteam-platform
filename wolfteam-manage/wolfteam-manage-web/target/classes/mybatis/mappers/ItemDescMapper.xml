@@ -1,0 +1,17 @@
+<!-- <?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.taotao.manage.mapper.ItemDescMapper">
+
+	<update id="updateItemDescByItemId" parameterType="ItemDesc">
+		UPDATE tb_item_desc
+		SET 
+		 item_desc = #{itemDesc},
+		 updated = NOW()
+		WHERE
+			item_id = #{itemId}
+	</update>
+	
+</mapper> -->
